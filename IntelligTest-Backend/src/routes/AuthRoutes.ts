@@ -1,0 +1,29 @@
+import {Router} from "express";
+import {param, body} from "express-validator";
+import {handleInputErrors} from "../middleware/handleErrors";
+import {AuthController} from "../controllers/AuthControllers";
+
+const router = Router()
+router.post('/create-account',
+    body("name")
+        .notEmpty().withMessage("Name is required"),
+    body("email")
+        .isEmail().withMessage("Email is required"),
+    body("password")
+        .isLength({min: 8}).withMessage("Password is short, minimum 8 characters"),
+    body("passwordConfirmation").custom((value, {req})=>{
+        if(req.body.password!=value){
+            throw new Error("Passwords are different")
+        }
+        else{
+            return true
+        }
+    }),
+    handleInputErrors,
+    AuthController.createAccount
+)
+
+
+
+
+export default router
