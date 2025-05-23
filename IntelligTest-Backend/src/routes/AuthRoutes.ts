@@ -23,7 +23,57 @@ router.post('/create-account',
     AuthController.createAccount
 )
 
+router.post('/confirm-account',
+    body("token")
+        .notEmpty().withMessage("Token is required"),
+    handleInputErrors,
+    AuthController.confirmAccount
+)
 
+router.post('/login',
+    body("email")
+        .isEmail().withMessage("Email is required"),
+    body("password")
+        .notEmpty().withMessage("Password is required"),
+    handleInputErrors,
+    AuthController.loginAccount
+)
+
+router.post('/request-token',
+    body("email")
+        .isEmail().withMessage("Email is required"),
+    handleInputErrors,
+    AuthController.requestToken
+)
+
+router.post('/forget-password',
+    body("email")
+        .isEmail().withMessage("Email is required"),
+    handleInputErrors,
+    AuthController.forgetPassword
+)
+
+router.post('/validate-token',
+    body("token")
+        .notEmpty().withMessage("Token is required"),
+    handleInputErrors,
+    AuthController.validateToken
+)
+
+router.post('/update-password/:token',
+    param("token")
+        .notEmpty().withMessage("Token is required"),
+    body("password")
+        .notEmpty().withMessage("Password is required"),
+    body("passwordConfirmation").custom((value, {req}) =>{
+        if(req.body.password!=value){
+            throw new Error("Passwords do not match")
+        }
+        return true
+    }),
+    handleInputErrors,
+    AuthController.updatePassword
+)
 
 
 export default router

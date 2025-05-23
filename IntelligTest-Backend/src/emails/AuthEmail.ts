@@ -15,12 +15,11 @@ export class AuthEmails {
             text: 'IntelligTest - Confirm your account',
             html: `<p>Hello: ${user.name}, you have created your account in AdministerTasks. You just need to confirm it</p>
                 <p>Visit the next link: </p>
-                <a href="">Confirm your account</a>
+                <a href="${process.env.FRONTEND_URL}/auth/confirm-account">Confirm your account</a>
                 <p>Enter the code: <b>${user.token}</b></p>
                 <p>This token expires in 10 minutes</p>
             `
         })
-        console.log('Message sent', info)
     }
 
     static sendPasswordResetToken = async (user: IEmail) =>{
@@ -36,6 +35,5 @@ export class AuthEmails {
                 <p>This token expires in 10 minutes</p>
             `
         })
-        console.log('Message sent', info)
     }
 }
