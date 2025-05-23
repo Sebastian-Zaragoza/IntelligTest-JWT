@@ -1,12 +1,11 @@
 import {Outlet} from "react-router";
 import Logo from "../components/Logo.tsx";
-import {ToastContainer} from "react-toastify";
-
+import {Toaster} from "sonner";
 export default function AuthLayout() {
     return (
         <>
             <div className="relative min-h-screen flex">
-                <div className="absolute py-10 pl-20 flex justify-between items-center columns-2">
+                <div className="absolute py-10 pl-20 items-center columns-2 hidden lg:flex">
                     <Logo />
                     <h1 className="text-center font-semibold text-white ">IntelligTest</h1>
                 </div>
@@ -22,10 +21,7 @@ export default function AuthLayout() {
                 </div>
                 <Outlet />
             </div>
-            <ToastContainer
-                pauseOnHover={false}
-                pauseOnFocusLoss={false}
-            />
+            <Toaster/>
         </>
     );
 }

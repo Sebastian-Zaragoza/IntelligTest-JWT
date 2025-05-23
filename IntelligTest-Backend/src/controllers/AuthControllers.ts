@@ -33,7 +33,7 @@ export class AuthController {
             const { email } = userData;
             const userExists = await User.findOne({ email });
             if (userExists) {
-                res.status(409).json({ errors: "User already exists" });
+                res.status(409).json({ error: "User already exists" });
             }
 
             const user = new User(userData);
@@ -45,7 +45,7 @@ export class AuthController {
             sendEmail({ user, token });
             await Promise.allSettled([user.save(), token.save()])
 
-            res.send("Account created. Check your email");
+            res.send("Account created");
         }catch(error){
             res.status(500).json({error: 'Error occurred'})
         }
@@ -120,7 +120,7 @@ export class AuthController {
             sendEmail({user, token})
 
             await token.save()
-            res.send('New token has been sent to your e-mail')
+            res.send('New token has been sent to your email')
 
         }catch(error){
             res.status(500).json({error: "Error occurred"})
@@ -146,7 +146,7 @@ export class AuthController {
             await token.save()
             resendEmail({user, token})
 
-            res.send('Check your e-mail to reset your password')
+            res.send('Check your email to reset your password')
 
         }catch(error){
             res.status(500).json({error: 'Error occurred'})

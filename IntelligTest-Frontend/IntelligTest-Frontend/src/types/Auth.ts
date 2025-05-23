@@ -10,3 +10,4 @@ export const authSchema = z.object({
 type Auth = z.infer<typeof authSchema>
 export type UserLoginForm = Pick<Auth, 'email' | 'password'>
 export type UserRegisterForm = Pick<Auth, 'name'| 'email' | 'password'| 'confirmPassword'>
+export type ConfirmToken = Pick<Auth, 'token'>

@@ -36,14 +36,14 @@ export default function LoginUI() {
                             {...register("email", {
                                 required: "Email is required",
                                 pattern: {
-                                    value: /\S+@\S+\. \S+/,
+                                    value: /\S+@\S+\.\S+/,
                                     message: "Invalid email"
                                 },
                             })}
-                            {...errors.email && (
-                                <ErrorMessage>{errors.email.message}</ErrorMessage>
-                            )}
                         />
+                        {errors.email && (
+                            <ErrorMessage>{errors.email.message}</ErrorMessage>
+                        )}
                     </div>
                     <div>
                         <label className="block text-sm font-semibold text-gray-700">Password</label>
@@ -55,10 +55,10 @@ export default function LoginUI() {
                             {...register("password", {
                                 required: "Password is required",
                             })}
-                            {...errors.password && (
-                                <ErrorMessage>{errors.password.message}</ErrorMessage>
-                            )}
                         />
+                        {errors.password && (
+                            <ErrorMessage>{errors.password.message}</ErrorMessage>
+                        )}
                     </div>
                     <button
                         type="submit"
