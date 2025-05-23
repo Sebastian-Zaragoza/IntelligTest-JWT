@@ -28,27 +28,29 @@ function resendEmail({user, token}: sendEmailProps){
 
 export class AuthController {
     static createAccount = async (req: Request, res: Response) => {
-        try{
-            const {email} = req.body
-            const userExists = await User.findOne({email})
+        try {
+            const { confirmPassword, ...userData } = req.body;
+            const { email } = userData;
+            const userExists = await User.findOne({ email });
             if (userExists) {
-                const error = new Error('User already exists')
-                res.status(400).json({errors: error.message})
+                res.status(409).json({ errors: "User already exists" });
             }
-            const user = new User(req.body)
-            user.password = await hashPassword(req.body.password)
-            const token = new Token()
-            token.token = generateToken()
-            token.user = user.id
-            sendEmail({user, token})
 
+            const user = new User(userData);
+            user.password = await hashPassword(req.body.password);
+            const token = new Token({
+                token: generateToken(),
+                user: user.id,
+            });
+            sendEmail({ user, token });
             await Promise.allSettled([user.save(), token.save()])
-            res.send('Account created successfully. Access your email and confirm your account')
 
-        }catch (errors){
-            res.status(500).send({errors: errors.message});
+            res.send("Account created. Check your email");
+        }catch(error){
+            res.status(500).json({error: 'Error occurred'})
         }
     }
+
 
     static confirmAccount = async (req: Request, res: Response) => {
         try {

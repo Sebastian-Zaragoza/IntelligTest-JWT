@@ -16,7 +16,7 @@ export default function Router() {
             <Routes>
                 <Route element={<AuthLayout/>}>
                     <Route path={'/auth/login'} element={<LoginUI/>}/>
-                    <Route path={'/auth/create-account'} element={<RegisterUI/>}/>
+                    <Route path={'/auth/register'} element={<RegisterUI/>}/>
                 </Route>
             </Routes>
         </BrowserRouter>

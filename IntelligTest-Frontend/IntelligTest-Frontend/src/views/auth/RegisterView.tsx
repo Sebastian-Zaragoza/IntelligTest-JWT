@@ -1,6 +1,10 @@
 import type {UserRegisterForm} from "../../types/Auth.ts";
 import {useForm} from "react-hook-form";
 import ErrorMessage from "../../components/ErrorMessage.tsx";
+import {Link} from "react-router";
+import {createAccount} from "../../api/AuthAPI.ts";
+import {useMutation} from "@tanstack/react-query";
+import {toast} from "react-toastify";
 
 export default function RegisterUI(){
     const initialValues:UserRegisterForm = {
@@ -10,10 +14,25 @@ export default function RegisterUI(){
         confirmPassword: '',
     }
 
-    const {register, handleSubmit, formState:{errors}} = useForm({defaultValues: initialValues})
+    const {register, handleSubmit, formState:{errors}, reset, watch} = useForm({defaultValues: initialValues})
+
+    const {mutate} = useMutation({
+        mutationFn: createAccount,
+        onError: (error) => {
+            toast.error(error.message)
+        },
+        onSuccess: (data) => {
+            toast.success(data)
+            reset()
+        }
+    })
+
+    const password = watch('password')
+
     const handleLogin = (formData: UserRegisterForm) => {
-        console.log(formData)
+        mutate(formData)
     }
+
 
     return(
         <div className="flex flex-1 flex-col justify-center items-center p-8">
@@ -21,26 +40,25 @@ export default function RegisterUI(){
                 <h3 className="text-3xl font-bold text-center">Welcome back</h3>
                 <p className="text-lg text-center">
                     Do have an account?{' '}
-                    <a href="/auth/login" className="text-blue-700 hover:underline">
+                    <Link to={'/auth/login'} className="text-blue-700 hover:underline">
                         Login
-                    </a>{' '}
+                    </Link>
                 </p>
 
                 <form className="space-y-4" onSubmit={handleSubmit(handleLogin)}>
                     <div>
                         <label className="block text-sm font-semibold text-gray-700">Name</label>
                         <input
-                            id="name"
                             type="name"
                             placeholder="yourname"
                             className="mt-1 block w-full border-b border-gray-300 focus:border-gray-800 focus:ring-0 px-0 py-2 outline-none"
                             {...register("name", {
                                 required: "Name is required",
                             })}
-                            {...errors.name && (
-                                <ErrorMessage>{errors.name.message}</ErrorMessage>
-                            )}
                         />
+                        {errors.name && (
+                            <ErrorMessage>{errors.name.message}</ErrorMessage>
+                        )}
                     </div>
                     <div>
                         <label className="block text-sm font-semibold text-gray-700">Email</label>
@@ -52,44 +70,44 @@ export default function RegisterUI(){
                             {...register("email", {
                                 required: "Email is required",
                                 pattern: {
-                                    value: /\S+@\S+\. \S+/,
-                                    message: "Invalid email"
+                                    value: /\S+@\S+\.\S+/,
+                                    message: "Invalid email address",
                                 },
                             })}
-                            {...errors.email && (
-                                <ErrorMessage>{errors.email.message}</ErrorMessage>
-                            )}
                         />
+                        {errors.email && (
+                            <ErrorMessage>{errors.email.message}</ErrorMessage>
+                        )}
                     </div>
                     <div>
                         <label className="block text-sm font-semibold text-gray-700">Password</label>
                         <input
-                            id="password"
                             type="password"
                             placeholder="••••••••"
                             className="mt-1 block w-full border-b border-gray-300 focus:border-gray-800 focus:ring-0 px-0 py-2 outline-none"
                             {...register("password", {
                                 required: "Password is required",
                             })}
-                            {...errors.password && (
-                                <ErrorMessage>{errors.password.message}</ErrorMessage>
-                            )}
                         />
+                        {errors.password && (
+                            <ErrorMessage>{errors.password.message}</ErrorMessage>
+                        )}
                     </div>
                     <div>
                         <label className="block text-sm font-semibold text-gray-700">Confirm Password</label>
                         <input
-                            id="confirmPassword"
                             type="password"
                             placeholder="••••••••"
                             className="mt-1 block w-full border-b border-gray-300 focus:border-gray-800 focus:ring-0 px-0 py-2 outline-none"
                             {...register("confirmPassword", {
-                                required: "Repeat your password",
+                                required: "Password confirmation is required",
+                                validate: value =>
+                                    value === password || "Passwords do not match",
                             })}
-                            {...errors.confirmPassword && (
-                                <ErrorMessage>{errors.confirmPassword.message}</ErrorMessage>
-                            )}
                         />
+                        {errors.confirmPassword && (
+                            <ErrorMessage>{errors.confirmPassword.message}</ErrorMessage>
+                        )}
                     </div>
                     <button
                         type="submit"
@@ -101,9 +119,9 @@ export default function RegisterUI(){
 
                 <p className="text-center text-lg">
                     Forgot password?{' '}
-                    <a href="/forgot-password" className="text-blue-700 hover:underline">
+                    <Link to={'/auth/forget-account'} className="text-blue-700 hover:underline">
                         Click here
-                    </a>
+                    </Link>
                 </p>
             </div>
         </div>

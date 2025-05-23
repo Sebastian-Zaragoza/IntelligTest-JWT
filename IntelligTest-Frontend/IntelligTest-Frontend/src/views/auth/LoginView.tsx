@@ -20,7 +20,7 @@ export default function LoginUI() {
                 <h3 className="text-3xl font-bold text-center">Welcome back</h3>
                 <p className="text-lg text-center">
                     Don’t have an account?{' '}
-                    <Link to={'/auth/create-account'} className="text-blue-700 hover:underline">
+                    <Link to={'/auth/register'} className="text-blue-700 hover:underline">
                         Click here
                     </Link>
                 </p>
