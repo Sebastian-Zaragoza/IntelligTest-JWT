@@ -48,7 +48,7 @@ export async function loginAccount(formData: UserLoginForm){
     try{
         const url = '/auth/login'
         const {data} = await api.post<string>(url, formData)
-        return data
+        localStorage.setItem('DevFlowAuthToken', data)
     }catch(error){
         if(isAxiosError(error) && error.response){
             throw new Error(error.response.data.error);

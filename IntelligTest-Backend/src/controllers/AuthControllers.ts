@@ -4,6 +4,7 @@ import {checkPassword, hashPassword} from "../utils/auth";
 import {generateToken} from "../utils/token";
 import Token, {IToken} from "../models/token";
 import {AuthEmails} from "../emails/AuthEmail";
+import {generateJWT} from "../utils/jst";
 
 type sendEmailProps = {
     user: IUser
@@ -95,7 +96,8 @@ export class AuthController {
                 res.status(401).json({error: error.message})
             }
 
-            res.send(`Welcome ${user.name}`)
+            const token = generateJWT({payload: user.id})
+            res.send(token)
         }catch(error){
             res.status(500).json({error: "Error occurred"})
         }
