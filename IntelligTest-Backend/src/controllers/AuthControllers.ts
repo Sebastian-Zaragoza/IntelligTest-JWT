@@ -175,7 +175,7 @@ export class AuthController {
                 const error = new Error('Token not found')
                 res.status(404).json({error: error.message})
             }
-            const user = await User.findOne({token})
+            const user = await User.findById(tokenExist.user)
             user.password = await hashPassword(req.body.password)
 
             await Promise.allSettled([user.save(), tokenExist.deleteOne()])

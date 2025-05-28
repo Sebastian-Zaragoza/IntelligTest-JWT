@@ -9,7 +9,7 @@ router.post('/create-account',
     body("name")
         .notEmpty().withMessage("Name is required"),
     body("password")
-        .isLength({min:1}).withMessage("Password is short, minimum 8 characters"),
+        .isLength({min:8}).withMessage("Password is short, minimum 8 characters"),
     body("confirmPassword").custom((value, {req})=>{
         if(req.body.password != value){
             throw new Error('Passwords are different')
@@ -61,9 +61,10 @@ router.post('/validate-token',
 
 router.post('/update-password/:token',
     param("token")
+        .isString().withMessage("Token must be a string")
         .notEmpty().withMessage("Token is required"),
     body("password")
-        .notEmpty().withMessage("Password is required"),
+        .isLength({min:8}).withMessage("Password is short, minimum 8 characters"),
     body("confirmPassword").custom((value, {req}) =>{
         if(req.body.password!=value){
             throw new Error("Passwords do not match")

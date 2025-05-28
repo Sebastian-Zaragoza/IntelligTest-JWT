@@ -53,11 +53,10 @@ export default function RegisterUI(){
         mutate(formData)
     }
 
-
     return(
         <div className="flex flex-1 flex-col justify-center items-center p-8">
             <div className="w-full max-w-md space-y-6">
-                <h3 className="text-3xl font-bold text-center">Welcome back</h3>
+                <h3 className="text-3xl font-bold text-center">Sign Up</h3>
                 <p className="text-lg text-center">
                     Do have an account?{' '}
                     <Link to={'/auth/login'} className="text-blue-700 hover:underline">
@@ -114,7 +113,7 @@ export default function RegisterUI(){
                         )}
                     </div>
                     <div>
-                        <label className="block text-sm font-semibold text-gray-700">Confirm Password</label>
+                        <label className="block text-sm font-semibold text-gray-700">Confirm password</label>
                         <input
                             type="password"
                             placeholder="••••••••"

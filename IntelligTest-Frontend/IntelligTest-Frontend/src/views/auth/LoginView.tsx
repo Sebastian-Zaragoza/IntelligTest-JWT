@@ -1,7 +1,10 @@
 import type {UserLoginForm} from "../../types/Auth.ts";
 import {useForm} from "react-hook-form";
 import ErrorMessage from "../../components/ErrorMessage.tsx";
-import {Link} from "react-router";
+import {Link, useNavigate} from "react-router";
+import {useMutation} from "@tanstack/react-query";
+import {loginAccount} from "../../api/AuthAPI.ts";
+import {toast} from "sonner";
 
 export default function LoginUI() {
     const initialValues:UserLoginForm = {
@@ -9,10 +12,26 @@ export default function LoginUI() {
         password: '',
     }
 
-    const {register, handleSubmit, formState:{errors}} = useForm({defaultValues: initialValues})
+    const navigate = useNavigate()
+    const {register, handleSubmit, formState:{errors}, reset} = useForm({defaultValues: initialValues})
+
+    const {mutate} = useMutation({
+        mutationFn: loginAccount,
+        onError: (error) =>{
+            toast.error(error.message, {
+                duration: 7000,
+            })
+        },
+        onSuccess:()=>{
+            reset()
+            navigate('/')
+        }
+    })
+
     const handleLogin = (formData: UserLoginForm) => {
-        console.log(formData)
+        mutate(formData)
     }
+
 
     return (
         <div className="flex flex-1 flex-col justify-center items-center p-8">
@@ -21,7 +40,7 @@ export default function LoginUI() {
                 <p className="text-lg text-center">
                     Don’t have an account?{' '}
                     <Link to={'/auth/register'} className="text-blue-700 hover:underline">
-                        Click here
+                        Sign Up
                     </Link>
                 </p>
 
@@ -70,8 +89,15 @@ export default function LoginUI() {
 
                 <p className="text-center text-lg">
                     Forgot password?{' '}
-                    <Link to={'/auth/forget-account'} className="text-blue-700 hover:underline">
+                    <Link to={'/auth/forget-password'} className="text-blue-700 hover:underline">
                         Click here
+                    </Link>
+                </p>
+
+                <p className="text-center text-lg">
+                    Don't have confirmed your email?{' '}
+                    <Link to={'/auth/request-code'} className="text-blue-700 hover:underline">
+                        Request a new code
                     </Link>
                 </p>
             </div>

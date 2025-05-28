@@ -13,7 +13,7 @@ export class AuthEmails {
             to: user.email,
             subject: 'IntelligTest - Confirm your account',
             text: 'IntelligTest - Confirm your account',
-            html: `<p>Hello: ${user.name}, you have created your account in AdministerTasks. You just need to confirm it</p>
+            html: `<p>Hello: ${user.name}, you have created your account in IntelligTest. You just need to confirm it</p>
                 <p>Visit the next link: </p>
                 <a href="${process.env.FRONTEND_URL}/auth/confirm-account">Confirm your account</a>
                 <p>Enter the code: <b>${user.token}</b></p>

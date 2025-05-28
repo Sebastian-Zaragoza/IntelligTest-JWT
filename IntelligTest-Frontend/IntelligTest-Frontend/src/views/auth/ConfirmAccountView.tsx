@@ -21,16 +21,12 @@ export default function ConfirmAccountView() {
                 duration: 7000
             });
         },
-        onSuccess: (data) => {
-            toast.success(data,{
-                duration: 7000
-            })
+        onSuccess: () => {
             navigate('/auth/login')
         }
     })
 
     const handleComplete = (token: ConfirmToken['token']) => {
-        console.log({token})
         mutate({token})
     }
 
@@ -57,7 +53,7 @@ export default function ConfirmAccountView() {
                 <p className="text-center text-lg">
                     Request a{' '}
                     <Link to={'/auth/request-token'} className="text-blue-700 hover:underline">
-                        New code
+                        new code
                     </Link>
                 </p>
             </div>
