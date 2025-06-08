@@ -6,24 +6,83 @@ IntelligTest JWT is a customized JWT authentication system built for a MERN-base
 
 ```
 IntelligTest-JWT/
-├── backend/
-│   ├── controllers/
-│   ├── models/
-│   ├── routes/
-│   ├── utils/
-│   ├── middlewares/
-│   ├── app.js
-│   └── server.js
-├── frontend/
+├── IntelligTest-Backend/
 │   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── services/
-│   │   └── App.jsx
-│   ├── public/
-│   └── vite.config.js
-├── .env
+│   │   ├── config/
+│   │   │   ├── cors.ts
+│   │   │   ├── database.ts
+│   │   │   └── nodemailer.ts
+│   │   ├── controllers/
+│   │   │   └── AuthControllers.ts
+│   │   ├── emails/
+│   │   │   └── AuthEmail.ts
+│   │   ├── middleware/
+│   │   │   ├── auth.ts
+│   │   │   └── handleErrors.ts
+│   │   ├── models/
+│   │   │   ├── token.ts
+│   │   │   └── users.ts
+│   │   ├── routes/
+│   │   │   └── AuthRoutes.ts
+│   │   ├── utils/
+│   │   │   ├── auth.ts
+│   │   │   ├── jst.ts
+│   │   │   └── token.ts
+│   │   ├── index.ts
+│   │   └── server.ts
+│   ├── .env
+│   ├── package.json
+│   ├── package-lock.json
+│   └── tsconfig.json
+│
+├── IntelligTest-Frontend/
+│   ├── IntelligTest-Frontend/
+│   │   ├── public/
+│   │   ├── src/
+│   │   │   ├── api/
+│   │   │   │   └── AuthAPI.ts
+│   │   │   ├── components/
+│   │   │   │   └── auth/
+│   │   │   │       ├── NewPasswordForm.tsx
+│   │   │   │       ├── NewPasswordToken.tsx
+│   │   │   │       ├── ErrorMessage.tsx
+│   │   │   │       └── Logo.tsx
+│   │   │   ├── layouts/
+│   │   │   │   ├── AppLayout.tsx
+│   │   │   │   └── AuthLayout.tsx
+│   │   │   ├── lib/
+│   │   │   │   └── axios.ts
+│   │   │   ├── types/
+│   │   │   │   └── Auth.ts
+│   │   │   ├── views/
+│   │   │   │   ├── auth/
+│   │   │   │   │   ├── ConfirmAccountView.tsx
+│   │   │   │   │   ├── ForgetPasswordView.tsx
+│   │   │   │   │   ├── LoginView.tsx
+│   │   │   │   │   ├── NewPasswordView.tsx
+│   │   │   │   │   ├── RegisterView.tsx
+│   │   │   │   │   └── RequestCodeView.tsx
+│   │   │   │   └── DeskView.tsx
+│   │   │   ├── index.css
+│   │   │   ├── main.tsx
+│   │   │   ├── router.tsx
+│   │   │   └── vite-env.d.ts
+│   │   ├── .env.local
+│   │   ├── .gitignore
+│   │   ├── eslint.config.js
+│   │   ├── index.html
+│   │   ├── package.json
+│   │   ├── package-lock.json
+│   │   ├── postcss.config.js
+│   │   ├── README.md
+│   │   ├── tailwind.config.js
+│   │   ├── tsconfig.app.json
+│   │   ├── tsconfig.json
+│   │   ├── tsconfig.node.json
+│   │   └── vite.config.ts
+│
 └── README.md
+
 ```
 
 ## 🔐 Features
