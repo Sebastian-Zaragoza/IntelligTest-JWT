@@ -1,82 +1,78 @@
-IntelligTest JWT System
+# IntelligTest JWT Authentication System
 
-This repository contains a custom-made JWT-based authentication system for IntelligTest, a web application designed to generate educational tests from user-uploaded notes. This subproject handles the authentication workflow from both the frontend and backend, built from scratch.
+IntelligTest is a customized JWT authentication system built for a MERN-based educational web app. This project includes a fully functional backend and frontend that implement user authentication, registration, email verification, password recovery, and secure token-based access control.
 
-Features
+## 🌐 Live Preview
+Coming soon...
 
-- ✅ Custom JWT authentication
-- ✅ Secure user registration with email confirmation
-- ✅ Login & logout with token generation
-- ✅ Token validation and refresh
-- ✅ Password reset via email token
-- ✅ Frontend integration with authentication routes
-- ✅ Modular structure for scalability
+## 📁 Project Structure
 
-Project Structure
-
-Intellig-Test-JWT/
-│
-├── backend/                  # Express server with all authentication logic
+```
+IntelligTest-JWT/
+├── backend/
 │   ├── controllers/
 │   ├── models/
 │   ├── routes/
 │   ├── utils/
-│   └── .env.example          # Add your JWT secret & email config here
-│
-├── frontend/                 # React frontend for registration/login/reset UI
-│   └── src/
-│       ├── components/
-│       ├── pages/
-│       └── api/
-│
+│   ├── middlewares/
+│   ├── app.js
+│   └── server.js
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── services/
+│   │   └── App.jsx
+│   ├── public/
+│   └── vite.config.js
+├── .env
 └── README.md
+```
 
-Tech Stack
+## 🔐 Features
 
-- Backend: Node.js, Express, MongoDB, Mongoose, JWT
-- Frontend: React, React Router, Axios, Tailwind CSS
-- Email Service: Nodemailer
-- Security: bcrypt, dotenv, token expiration
+- User registration with email confirmation
+- JWT login with secure token handling
+- Password reset via email token
+- Role-based route protection
+- Reusable middlewares and modular file structure
 
-How to Run Locally
+## 🧪 Tech Stack
 
-1. Clone the Repository
+- **Frontend:** React, Vite, TailwindCSS
+- **Backend:** Node.js, Express.js, MongoDB, Mongoose
+- **Authentication:** JWT, Email Tokens, bcryptjs
+- **Tools:** React Hook Form, Axios, Nodemailer, Zod, dotenv
 
-git clone https://github.com/Sebastian-Zaragoza/Intellig-Test-JWT.git
-cd Intellig-Test-JWT
+## 🚀 Quick Start
 
-2. Setup Environment Variables
+1. Clone the repo:
+   ```
+   git clone https://github.com/Sebastian-Zaragoza/Intellig-Test-JWT.git
+   ```
 
-In the /backend/ folder, create a .env file using the provided .env.example:
+2. Install dependencies:
+   ```
+   cd backend && npm install
+   cd ../frontend && npm install
+   ```
 
-JWT_SECRET=your_secret_key
-EMAIL_USER=your_email@example.com
-EMAIL_PASS=your_email_password
-CLIENT_URL=http://localhost:3000
+3. Configure your `.env` files in the root and backend folders.
 
-3. Start the Backend
+4. Run development servers:
+   ```
+   cd backend && npm run dev
+   cd ../frontend && npm run dev
+   ```
 
-cd backend
-npm install
-npm run dev
+## 🧠 Motivation
 
-4. Start the Frontend
+This system is designed for **IntelligTest**, an AI-driven test generator where students upload their notes and get quizzes generated. This repository handles the secure authentication and user flow.
 
-cd frontend
-npm install
-npm run dev
+## 🤝 Contributing
 
-Visit: http://localhost:4000
+Feel free to fork and contribute by opening pull requests.
 
-Future Improvements
-
-- Add 2FA support
-- JWT refresh token rotation
-- OAuth integration
-- Unit tests for auth flows
-
-License
+## 📃 License
 
 This project is licensed under the MIT License.
-
-Built with 💡 by Sebastian Zaragoza (https://github.com/Sebastian-Zaragoza)
