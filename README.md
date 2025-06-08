@@ -1,6 +1,6 @@
 # IntelligTest JWT Authentication System
 
-IntelligTest is a customized JWT authentication system built for a MERN-based educational web app. This project includes a fully functional backend and frontend that implement user authentication, registration, email verification, password recovery, and secure token-based access control.
+IntelligTest JWT is a customized JWT authentication system built for a MERN-based educational web app. This project includes a fully functional backend and frontend that implement user authentication, registration, email verification, password recovery, and secure token-based access control.
 
 ## 📁 Project Structure
 
