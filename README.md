@@ -1,7 +1,3 @@
-🎉✨ IntelligTest JWT Authentication System ✨🎉
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 🔐 Description
 A customized JWT-based authentication system for the MERN-based IntelligTest educational web app. It enables secure user registration, email verification, login, password reset, and robust token-based access control.
 
