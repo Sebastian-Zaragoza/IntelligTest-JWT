@@ -1,17 +1,13 @@
-🔐 Description  
+## 🔐 Description  
 A customized JWT-based authentication system for the MERN-based IntelligTest educational web app. It enables secure user registration, email verification, login, password reset, and robust token-based access control.
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-⚙️ Tech Stack
+## ⚙️ Tech Stack
 
 - **Backend**: Node.js, Express.js, MongoDB, Mongoose  
 - **Frontend**: React, Vite, TypeScript, TailwindCSS  
 - **Auth Tools**: JSON Web Tokens (JWT), bcryptjs, Nodemailer
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-📂 Project Structure
+## 📂 Project Structure
 
 ```bash
 IntelligTest-JWT/
@@ -37,9 +33,7 @@ IntelligTest-JWT/
     └── package.json
 ```
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-🔑 JWT Authentication
+## 🔑 JWT Authentication
 
 ### Backend Implementation
 
@@ -63,9 +57,7 @@ IntelligTest-JWT/
 - 🚪 **Route Protection**  
   Higher-order components guard private routes, redirecting unauthenticated users to the login page.
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-🚀 Quick Start
+## 🚀 Quick Start
 
 1. **Clone the repository**  
    ```bash
@@ -88,15 +80,11 @@ IntelligTest-JWT/
    - 🔗 Frontend: `http://localhost:3000`  
    - 🖥️ Backend API: `http://localhost:5000`
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-📄 License
+## 📄 License
 
 MIT © Sebastian Zaragoza
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-📫 Contact
+## 📫 Contact
 
 👤 **Sebastian Zaragoza**  
 🔗 GitHub: https://github.com/Sebastian-Zaragoza  
