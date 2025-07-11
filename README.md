@@ -93,3 +93,9 @@ IntelligTest-JWT/
 📄 License
 
 MIT © Sebastian Zaragoza
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 📬 Contact
+**Sebastian Zaragoza**  
+GitHub: https://github.com/Sebastian-Zaragoza  
