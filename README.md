@@ -1,6 +1,6 @@
 🔐 Description
 
-A customized JWT-based authentication system for the MERN-based IntelligTest educational web app. It enables secure user registration, email verification, login, password reset, and robust token-based access control.
+A customized JWT-based authentication system for the Microservices IntelligTest web application. It enables secure user registration, email verification, login, password reset, and robust token-based access control. It doesn't implement AWS Cognito or Google OAuth 2.0. Its just a proposal of a JWT deployment.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
