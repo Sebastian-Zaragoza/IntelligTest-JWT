@@ -91,13 +91,6 @@ IntelligTest-JWT/
 5. **Access the app**  
    - Frontend: `http://localhost:3000`  
    - Backend API: `http://localhost:5000`
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-🤝 Contributing
-
-Contributions are welcome! Open issues or pull requests to improve features, fix bugs, or enhance documentation.
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 📄 License
